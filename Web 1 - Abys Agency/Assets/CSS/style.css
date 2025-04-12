@@ -1,0 +1,64 @@
+@font-face {
+    font-family: plain-regular;
+    src: url(/Fonts/plain-regular-webfont.woff);
+}
+@font-face {
+    font-family: silkserif-italic;
+    src: url(/Fonts/silkserif-regularitalic-webfont.woff);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-family: plain-regular;
+}
+#loader{
+    background-color: #0B0B0B;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    padding: 20vh 4.5vw;
+}
+.line{
+    height: fit-content;
+    overflow: hidden;
+    display: flex;
+    justify-content: start;
+}
+.timer{
+    padding: 0 5vw;
+    display: flex;
+    gap: 1vw;
+}
+.line span{
+    font-family: silkserif-italic;
+    font-size: 3vw;
+}
+.line .countdown{
+    text-align: right;
+    width: 5vw;
+}
+.line h1{
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 7vw;
+    line-height: 1;
+}
+.nowTxt{
+    padding: 0 1.5vw;
+}
+/* main{
+    position: relative;
+    background-color: #111;
+} */
+#page1{
+ width: 100%;
+ height: 100vh;
+ background-color: #151515;
+}
