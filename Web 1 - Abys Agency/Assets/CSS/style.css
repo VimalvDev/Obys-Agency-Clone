@@ -87,10 +87,16 @@ body {
     opacity: 0;
   }
 }
-/* main{
-    position: relative;
-    background-color: #111;
-} */
+.part2{
+text-align: left;
+position: relative;
+margin-top: 8vh;
+display: flex;
+justify-content: center;
+}
+.part2 .txt{
+    width: 50%;
+}
 #page1 {
   width: 100%;
   height: 100vh;
