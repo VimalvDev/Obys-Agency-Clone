@@ -16,13 +16,16 @@
   box-sizing: border-box;
   scrollbar-width: none;
   user-select: none;
-  cursor: none;
+  /* cursor: none; */
 }
 body {
   width: 100%;
   height: 100%;
   color: white;
   font-family: plain-light;
+}
+main {
+  background-color: #151515;
 }
 #cursor {
   width: 40px;
@@ -149,7 +152,6 @@ nav {
 #page1 {
   width: 100%;
   height: 100%;
-  background-color: #151515;
 }
 .p1content1 {
   display: flex;
@@ -159,7 +161,7 @@ nav {
 }
 .p1content1 .left span {
   font-family: silkserif-italic;
-  font-size: 3.5vw;
+  font-size: 3vw;
   padding-right: 5vw;
 }
 .p1content1 .right .p1txt {
@@ -252,4 +254,103 @@ nav {
   top: 0;
   right: 0;
   transform: translate(-50%, -50%);
+}
+#page3 {
+  width: 100%;
+  height: 100%;
+}
+.p3content1 {
+  display: flex;
+  padding: 0 4vw;
+}
+.p3content1 .left span {
+  font-size: 3vw;
+  font-family: silkserif-italic;
+}
+.p3content1 .right .p3txt {
+  overflow: hidden;
+}
+.p3content1 .right .p3txt h1 {
+  font-family: plain-regular;
+  text-transform: uppercase;
+  font-size: 7.5vw;
+  font-weight: 300;
+  line-height: 1;
+  padding-bottom: 9vh;
+}
+.p3content1 .left {
+  width: 26%;
+  text-align: end;
+  padding-right: 5vw;
+}
+.p3content1 .right {
+  width: 74%;
+}
+.p3underline {
+  height: 2px;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 11vh;
+}
+.p3content2 {
+  display: flex;
+  flex-direction: column;
+}
+.p3content2 .top {
+  position: relative;
+  padding: 0 28vw 7vh;
+}
+.p3content2 .top p {
+  font-size: 2vw;
+  color: white;
+}
+.p3content2 .bottom {
+  padding-left: 28vw;
+}
+.p3content2 img {
+  width: 33vw;
+}
+.bottomParaRight {
+  width: 21%;
+}
+.p3content2 .bottom {
+  display: flex;
+}
+.bottomParaRight {
+  line-height: 1.4;
+  font-size: 0.9vw;
+  margin-left: 1.5vw;
+}
+.blueBoxContainer {
+  padding: 0 28vw;
+}
+.blueBox {
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 2.5vw 8vh;
+  width: 80%;
+  background-color: #3f7df4;
+  position: relative;
+  bottom: 35vh;
+  left: 23vw;
+}
+.blueBox .line{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.493);
+  padding: 4vh 0;
+}
+.blueBox h3{
+  font-weight: 300;
+  font-size: 1.5vw;
+}
+.blueBox p{
+  width: 45%;
+  font-size: .9vw;
+}
+.p3underLine{
+  height: 2px;
+  background-color: white;
+  width: 100%;
 }
