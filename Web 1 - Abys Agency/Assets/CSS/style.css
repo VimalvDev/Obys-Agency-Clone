@@ -211,16 +211,16 @@ nav {
   transition: all 0.4s;
 }
 .p1content1 .web:hover,
-.content1 .graphics:hp1over {
+.p1content1 .graphics:hover {
   -webkit-text-stroke: 0.08vw white;
   color: transparent;
 }
 .p1content1 .web:hover::after,
-.content1 .graphics:hover::ap1 fter {
+.p1content1 .graphics:hover::after {
   opacity: 0;
 }
 /* p1content2 */
-.p1content2{
+.p1content2 {
   height: 100vh;
   display: flex;
   justify-content: end;
@@ -233,23 +233,23 @@ nav {
   align-items: center;
   position: relative;
 }
- .video img{
+.video img {
   object-fit: contain;
   width: 100%;
   position: absolute;
- }
+}
 .video video {
   width: 72.5vw;
   object-fit: cover;
-} 
-.videoCursor{
+}
+.videoCursor {
   width: 8vw;
   height: 8vw;
-  background-color: #FFA63D;
+  background-color: #ffa63d;
   position: absolute;
   z-index: 99;
   border-radius: 50%;
   top: 0;
   right: 0;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
