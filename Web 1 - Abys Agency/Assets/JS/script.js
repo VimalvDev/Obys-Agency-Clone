@@ -1,4 +1,4 @@
-function loaderAnimation() {
+function startingAnim() {
   let tl = gsap.timeline();
   //up
   tl.from(".line h1", {
@@ -24,9 +24,13 @@ function loaderAnimation() {
     },
     0.6
   );
-  tl.from(".txt", {
-    opacity: 0,
-  },1);
+  tl.from(
+    ".txt",
+    {
+      opacity: 0,
+    },
+    1
+  );
 
   //end
   tl.to(
@@ -38,7 +42,7 @@ function loaderAnimation() {
     "+=1.5"
   );
   tl.to(
-    ".line h1,.txt",
+    ".line h1,.part2 .txt",
     {
       opacity: 0,
       stagger: 0.1,
@@ -50,5 +54,36 @@ function loaderAnimation() {
     duration: 1.5,
     ease: "power4.out",
   });
+  //page1
+  tl.from(".p1content1 .right h1", {
+    yPercent: 100,
+    stagger: 0.2,
+    duration: 0.7,
+  },"-=1.4");
 }
-loaderAnimation();
+startingAnim();
+function customCursor() {
+  document.addEventListener("mousemove", (e) => {
+    gsap.to("#cursor", {
+      x: e.clientX,
+      y: e.clientY,
+      duration: 0.1,
+    });
+  });
+}
+customCursor();
+function magnetEffect() {
+  Shery.makeMagnet("nav li");
+}
+magnetEffect();
+function page1Anim() {}
+page1Anim();
+
+let videoCursorContainer = document.querySelector('.video')
+
+videoCursorContainer.addEventListener("mousemove",(e)=> {
+  gsap.to(".videoCursor", {
+    x: e.clientX,
+    y:e.clientY
+  })
+})
