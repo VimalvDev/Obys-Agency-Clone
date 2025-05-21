@@ -1,7 +1,7 @@
 function startingAnim() {
   let tl = gsap.timeline();
   //up
-  tl.from(".line h1", {
+  tl.from("#loader .line h1", {
     yPercent: 100,
     stagger: 0.2,
     duration: 0.7,
@@ -34,7 +34,7 @@ function startingAnim() {
 
   //end
   tl.to(
-    ".line span",
+    "#loader .line span",
     {
       opacity: 0,
       stagger: 0.1,
@@ -42,7 +42,7 @@ function startingAnim() {
     "+=1.5"
   );
   tl.to(
-    ".line h1,.part2 .txt",
+    "#loader .line h1,.part2 .txt",
     {
       opacity: 0,
       stagger: 0.1,

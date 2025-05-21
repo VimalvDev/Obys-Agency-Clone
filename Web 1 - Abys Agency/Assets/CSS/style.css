@@ -24,7 +24,6 @@ body {
   color: white;
   font-family: plain-light;
   background-color: #151515;
-
 }
 main {
   background-color: #151515;
@@ -46,7 +45,7 @@ main {
   height: 100%;
   padding: 20vh 4.5vw;
 }
-.line {
+#loader .line {
   height: fit-content;
   overflow: hidden;
   display: flex;
@@ -337,46 +336,163 @@ nav {
   margin-top: -17vw;
   left: 23vw;
 }
-.blueBox .line{
+.blueBox .line {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid rgba(255, 255, 255, 0.493);
   padding: 1.9vw 0;
 }
-.blueBox h3{
+.blueBox h3 {
   font-weight: 300;
   font-size: 1.5vw;
 }
-.blueBox p{
+.blueBox p {
   width: 45%;
-  font-size: .9vw;
+  font-size: 0.9vw;
 }
-.p3Bottom{
+.p3Bottom {
   display: flex;
   flex-direction: column;
 }
-.p3Bottom .bTop{
+.p3Bottom .bTop {
   display: flex;
   padding: 0 4vw;
 }
-.p3Bottom .left{
+.p3Bottom .left {
   width: 26%;
 }
-.p3Bottom .right{
+.p3Bottom .right {
   display: flex;
   flex-direction: column;
   width: 74%;
 }
-.p3Bottom p{
-  padding: 1.1vw 0 ;
+.p3Bottom p {
+  padding: 1.1vw 0;
 }
-.p3Bottom .underline{
+.underline {
   height: 1px;
   background-color: white;
   width: 100%;
 }
 .p3Bottom .bBottom {
   width: 100%;
-  min-height:100vh ;
+  min-height: 100vh;
+}
+.p3Bottom .bBottom .scroller {
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1.1;
+}
+.p3Bottom .bBottom .line {
+  display: inline-block;
+  white-space: nowrap;
+}
+.p3Bottom .bBottom .line span {
+  text-transform: uppercase;
+  color: transparent;
+  font-size: 7.5vw;
+  -webkit-text-stroke: 1px white;
+  display: inline-block;
+}
+.p3Bottom .bBottom .line span .italic {
+  font-family: silkserif-italic;
+}
+.p3Bottom .bBottom :nth-child(even) .line {
+  animation: scroller 60s linear infinite reverse;
+}
+.p3Bottom .bBottom :nth-child(odd) .line {
+  animation: scroller 60s linear infinite;
+}
+@keyframes scroller {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* page 4============footer */
+#page4 {
+  display: flex;
+  padding: 0 4vw;
+}
+#page4 .leftPage{
+  width: 26%;
+  text-align: end;
+}
+#page4 .leftPage span {
+  font-family: silkserif-italic;
+  font-size: 3vw;
+  line-height: 1.3;
+  padding-right: 5vw;
+}
+#page4 .rightPage{
+  width: 74%;
+}
+#page4 .hide {
+  display: none;
+}
+.heading4{
+  display: flex;
+  flex-direction: column;
+}
+.heading4 .headingTxt {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  padding-bottom: 5.5vw;
+}
+.heading4 h1 {
+  font-family: plain-regular;
+  text-transform: uppercase;
+  font-size: 7.5vw;
+  font-weight: 300;
+  line-height: 0.9;
+}
+.heading4 svg {
+  width: 6vw;
+  margin-left: 3vw;
+}
+#page4 .infoBox{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 5vw 0 6vw;
+}
+.infoBox h6{
+font-size: 1rem;
+font-weight: 400;
+margin-bottom: 1.5vw;
+}
+address,
+.infoBox a{
+  font-style: normal;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: white;
+  line-height: 1;
+}
+
+.infoBox .box span{
+  position: relative;
+  letter-spacing: -1px;
+
+}
+.infoBox .box span:not(.avoid)::before{
+  content: "";
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+
+}
+.copyright{
+  display: flex;
+  flex-direction: column;
+}
+.copyright .copyrightTxt{
+  padding: 3vw 0;
 }
