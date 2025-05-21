@@ -23,6 +23,8 @@ body {
   height: 100%;
   color: white;
   font-family: plain-light;
+  background-color: #151515;
+
 }
 main {
   background-color: #151515;
@@ -287,7 +289,7 @@ nav {
   width: 74%;
 }
 .p3underline {
-  height: 2px;
+  height: 1px;
   background-color: white;
   width: 100%;
   margin-bottom: 11vh;
@@ -323,15 +325,16 @@ nav {
 }
 .blueBoxContainer {
   padding: 0 28vw;
+  margin-bottom: 9vw;
 }
 .blueBox {
   display: flex;
   flex-direction: column;
-  padding: 5vh 2.5vw 8vh;
+  padding: 1.6vw 3vw 4vw;
   width: 80%;
   background-color: #3f7df4;
   position: relative;
-  bottom: 35vh;
+  margin-top: -17vw;
   left: 23vw;
 }
 .blueBox .line{
@@ -339,7 +342,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid rgba(255, 255, 255, 0.493);
-  padding: 4vh 0;
+  padding: 1.9vw 0;
 }
 .blueBox h3{
   font-weight: 300;
@@ -349,8 +352,31 @@ nav {
   width: 45%;
   font-size: .9vw;
 }
-.p3underLine{
-  height: 2px;
+.p3Bottom{
+  display: flex;
+  flex-direction: column;
+}
+.p3Bottom .bTop{
+  display: flex;
+  padding: 0 4vw;
+}
+.p3Bottom .left{
+  width: 26%;
+}
+.p3Bottom .right{
+  display: flex;
+  flex-direction: column;
+  width: 74%;
+}
+.p3Bottom p{
+  padding: 1.1vw 0 ;
+}
+.p3Bottom .underline{
+  height: 1px;
   background-color: white;
   width: 100%;
+}
+.p3Bottom .bBottom {
+  width: 100%;
+  min-height:100vh ;
 }
