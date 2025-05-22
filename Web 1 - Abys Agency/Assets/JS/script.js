@@ -1,3 +1,40 @@
+function lenisStart() {
+  const lenis = new Lenis({
+    duration: 2, // Controls how "slow/smooth" the scroll feels (default: 1.2)
+  });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+  gsap.ticker.lagSmoothing(0);
+}
+lenisStart();
+function parallax() {
+  //page1
+  gsap.to(".video", {
+    yPercent: 35,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".p1content2",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
+  //page2
+  gsap.to(".blueBox", {
+    yPercent: 5,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".blueBoxContainer",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
+
+}
+parallax();
 function startingAnim() {
   let tl = gsap.timeline();
   //up
@@ -18,6 +55,8 @@ function startingAnim() {
         let timefun = setInterval(() => {
           if (count <= 100) {
             countdown.textContent = count++;
+          } else {
+            clearInterval(timefun);
           }
         }, 25);
       },
@@ -55,11 +94,15 @@ function startingAnim() {
     ease: "power4.out",
   });
   //page1
-  tl.from(".p1content1 .right h1", {
-    yPercent: 100,
-    stagger: 0.2,
-    duration: 0.7,
-  },"-=1.4");
+  tl.from(
+    ".p1content1 .right h1",
+    {
+      yPercent: 100,
+      stagger: 0.2,
+      duration: 0.7,
+    },
+    "-=1.4"
+  );
 }
 startingAnim();
 function customCursor() {
@@ -76,14 +119,28 @@ function magnetEffect() {
   Shery.makeMagnet("nav li");
 }
 magnetEffect();
-function page1Anim() {}
+function page1Anim() {
+  let videoCursorContainer = document.querySelector(".video");
+
+  videoCursorContainer.addEventListener("mousemove", (e) => {
+    gsap.to(".videoCursor", {
+      x: e.clientX,
+      y: e.clientY,
+    });
+  });
+}
 page1Anim();
-
-let videoCursorContainer = document.querySelector('.video')
-
-videoCursorContainer.addEventListener("mousemove",(e)=> {
-  gsap.to(".videoCursor", {
-    x: e.clientX,
-    y:e.clientY
+function page3Anim() {
+  gsap.from(".p3underline", {
+    xPercent: 100,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".p3underline",
+      start: "top 90%",
+      end:"top 70%",
+      marker: "true",
+      scrub:true
+    }
   })
-})
+}
+page3Anim();
