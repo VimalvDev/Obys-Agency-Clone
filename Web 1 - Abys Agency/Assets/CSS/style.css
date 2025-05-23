@@ -16,7 +16,7 @@
   box-sizing: border-box;
   scrollbar-width: none;
   user-select: none;
-  /* cursor: none; */
+  cursor: none;
 }
 body {
   width: 100%;
@@ -34,11 +34,12 @@ main {
   height: 45px !important;
   background-color: transparent !important;
   outline: none !important;
-  transform: translate(-50%,-50%) !important;
+  transform: translate(-50%, -50%) !important;
   mix-blend-mode: difference !important;
+  display: inline-block !important;
 }
 #behindmouse {
-  border: .5px solid rgba(255, 255, 255, 0.747) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.747) !important;
 }
 #loader {
   background-color: #0b0b0b;
@@ -132,27 +133,33 @@ header {
 }
 nav {
   display: flex;
-  padding: 2.5vw 4vw;
+  padding: 2.7vw 4vw;
 }
 .navLeft {
-  width: 26%;
+  /* width: 26%; */
   display: flex;
   align-items: start;
+  position: fixed;
+  z-index: 99;
 }
-.navLeft .icons{
+.navLeft .icons {
   display: flex;
   align-items: center;
   gap: 2vw;
 }
-.navLeft .icons i{
+.navLeft .icons i {
   font-size: 1.5rem;
   font-weight: 300;
   padding: 2px 5px;
 }
 .navRight {
-  width: 74%;
+  position: relative;
+  left: 23.5vw;
+  width: calc(100% - 23.5vw);
   display: flex;
   justify-content: space-between;
+  z-index: 99;
+  transition: top 0.3s ease;
 }
 .navRight ul {
   display: flex;
@@ -163,7 +170,7 @@ nav {
   color: white;
   font-size: 1rem;
   font-weight: 300;
-  line-height: 1;
+  line-height: 1.05;
 }
 #page1 {
   width: 100%;
@@ -172,7 +179,7 @@ nav {
 .p1content1 {
   display: flex;
   align-items: start;
-  padding: 8.5vh 4vw;
+  padding: 4.7vw 4vw;
   justify-content: center;
 }
 .p1content1 .left span {
@@ -188,17 +195,16 @@ nav {
   text-transform: uppercase;
   font-size: 7.5vw;
   font-weight: 300;
-  line-height: 0.9;
+  line-height: 0.95;
   display: inline-block;
   vertical-align: top;
   display: flex;
-}
-.p1content1 .p1txtHover {
-  word-spacing: -50px;
+  position: relative;
+  z-index: 10;
 }
 .p1content1 .web {
   position: relative;
-  padding-bottom: 1.8vh;
+  padding-bottom: 1.5vh;
 }
 .p1content1 .graphics {
   position: relative;
@@ -237,6 +243,16 @@ nav {
 .p1content1 .graphics:hover::after {
   opacity: 0;
 }
+
+.hoverImg {
+  width: 22vw;
+  position: absolute;
+  opacity: 0;
+  top: -30%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
 /* p1content2 */
 .p1content2 {
   min-height: 100vh;
@@ -247,24 +263,37 @@ nav {
   height: 35vw;
   width: 72.5vw;
   position: relative;
-  background-color: blue;
+  background: url(/MP4/Video_1/img.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.videoContainer video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 .videoCursor {
-  width: clamp(100px, 8.5vw,180px);
-  height: clamp(100px, 8.5vw,180px);
+  width: clamp(100px, 8.5vw, 180px);
+  height: clamp(100px, 8.5vw, 180px);
   background-color: #ffa63d;
-  position: fixed;
+  position: fixed !important;
   z-index: 99;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* top:-10%;
-  left: 70%; */
+  top: -10%;
+  left: 70%;
 }
-.videoCursor i{
+.videoCursor i {
   font-size: 2rem;
+  font-weight: 600;
+}
+.videoCursor .pause {
+  display: none;
 }
 /*======================= page 2============================ */
 #page2 {
@@ -297,7 +326,8 @@ nav {
   display: flex;
   align-items: center;
   line-height: 1;
-  padding-bottom: 5.5vw;
+  margin-bottom: 5.5vw;
+  overflow: hidden;
 }
 
 .heading2 h1 {
@@ -306,6 +336,26 @@ nav {
   font-size: 7.5vw;
   font-weight: 300;
   line-height: 0.9;
+}
+.p2underlineCont,
+.p3underlineCont,
+.p3underlineCont2,
+.p4underlineCont {
+  overflow: hidden;
+}
+.p2underline,
+.p3underline,
+.p3underline2,
+.p2underlineBox1,
+.p2underlineBox2,
+.p2underlineBox3,
+.p2underlineBox4,
+.p2underlineBox5,
+.p2underlineBox6,
+.p4underline {
+  height: 1px;
+  background-color: white;
+  width: 100%;
 }
 
 /* boxes */
@@ -427,15 +477,15 @@ nav {
   justify-content: center;
   align-items: center;
   scale: 0;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 .circleBtn .circleTxt p {
   color: black;
   width: 60%;
   opacity: 0;
   scale: 0;
-  transition: all .4s;
-  transition-delay: .4s;
+  transition: all 0.4s;
+  transition-delay: 0.4s;
   font-size: 1rem;
 }
 .circleBtn:hover .circleTxt {
@@ -515,11 +565,16 @@ nav {
 .p3content1 .right {
   width: 74%;
 }
+.p3underlineCont {
+  overflow: hidden;
+  height: 2px;
+  width: 100%;
+  margin-bottom: 11vh;
+}
 .p3underline {
   height: 1px;
   background-color: white;
   width: 100%;
-  margin-bottom: 11vh;
 }
 .p3content2 {
   display: flex;
@@ -598,14 +653,9 @@ nav {
 .p3Bottom p {
   padding: 1.1vw 0;
 }
-.underline {
-  height: 1px;
-  background-color: white;
-  width: 100%;
-}
 .p3Bottom .bBottom {
   width: 100%;
-  min-height: 100vh;
+  margin-bottom: 13vw;
 }
 .p3Bottom .bBottom .scroller {
   white-space: nowrap;
@@ -672,12 +722,25 @@ nav {
   line-height: 1;
   padding-bottom: 5.5vw;
 }
-.heading4 h1 {
+.heading4 .normalTxt {
   font-family: plain-regular;
   text-transform: uppercase;
   font-size: 7.5vw;
   font-weight: 300;
   line-height: 0.9;
+  position: relative;
+}
+.italicTxt {
+  font-family: silkserif-italic;
+  font-size: 7.5vw;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  position: absolute;
+}
+.italicTxt span {
+  opacity: 0;
 }
 .heading4 svg {
   width: 6vw;
