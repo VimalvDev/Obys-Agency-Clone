@@ -175,7 +175,7 @@ nav {
 .navRight p,
 .navRight a {
   color: white;
-  font-size: clamp(15px,.85vw,16px);
+  font-size: clamp(15px, 0.85vw, 16px);
   font-weight: 300;
   line-height: 1.05;
 }
@@ -309,7 +309,6 @@ nav {
   display: flex;
   flex-direction: column;
   padding: 10vw 4vw 5vw;
-  /* min-height: 100vh; */
 }
 #page2 .top {
   display: flex;
@@ -381,7 +380,7 @@ nav {
   font-size: clamp(23px, 2.1vw, 40px);
   font-family: plain-regular;
   font-weight: 400;
-  padding-bottom: 2.5vw;
+  padding-bottom: 1.5vw;
 }
 .boxes .imgBox:nth-of-type(1) .img {
   height: 29vw;
@@ -394,6 +393,7 @@ nav {
 }
 .boxes .info {
   padding: 1.6vw 0;
+  margin-top: 1.5vw;
   display: flex;
   justify-content: space-between;
 }
@@ -466,8 +466,8 @@ nav {
   rotate: -45deg;
 }
 .arrowBox .circleBtn {
-  width: 410px;
-  height: 410px;
+  width: clamp(260px, 22vw, 410px);
+  height: clamp(260px, 22vw, 410px);
   border: 1px solid white;
   border-radius: 50%;
   display: flex;
@@ -485,6 +485,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   scale: 0;
   transition: all 0.4s;
 }
@@ -493,9 +494,10 @@ nav {
   width: 60%;
   opacity: 0;
   scale: 0;
+  font-weight: 500;
   transition: all 0.4s;
   transition-delay: 0.4s;
-  font-size: 1rem;
+  font-size: clamp(14px,.85vw,16px);
 }
 .circleBtn:hover .circleTxt {
   scale: 1;
@@ -503,21 +505,18 @@ nav {
 .arrowBox:nth-of-type(3) .circleBtn:hover .circleTxt p {
   scale: 1;
   opacity: 1;
-  rotate: -25deg;
 }
 .arrowBox:nth-of-type(4) .circleBtn:hover .circleTxt p {
   scale: 1;
   opacity: 1;
-  rotate: -15deg;
 }
 .arrowBox:nth-of-type(8) .circleBtn:hover .circleTxt p {
   scale: 1;
   opacity: 1;
-  rotate: 25deg;
 }
 .arrowBox svg {
   color: white;
-  width: 5vw;
+  width: clamp(68px,5vw,95px);
 }
 .projectBtn {
   display: flex;
@@ -801,11 +800,56 @@ address,
 /* =========================Responsiveness ========================*/
 /* For large desktop screens 1536*864px */
 @media screen and (max-width: 1536px) {
+  /* page1 */
+  .p1content1 {
+    padding: 12vw 2vw;
+  }
+  /* page2 */
+  #page2 {
+    padding: 10vw 6vw 5vw;
+  }
+  .boxes {
+    column-gap: 3vw;
+  }
+  .boxes .info {
+    padding: 2.5vw 0;
+  }
+  .boxes .info .left {
+    width: 60%;
+  }
+  .boxes .imgBox:nth-of-type(1) .img, 
+  .boxes .imgBox:nth-of-type(7) .img {
+    height: 33vw;
+    width: 100%;
+  }
+  .boxes .imgBox:nth-of-type(2) .img,
+  .boxes .imgBox:nth-of-type(5) .img,
+  .boxes .imgBox:nth-of-type(6) .img ,
+  .boxes .imgBox:nth-of-type(9) .img {
+    height: 35vw;
+    width: 100%;
+  }
+  .circleBtn .circleTxt p{
+    width: 90%;
+  }
+  .projectBtn a {
+    color: white;
+    width: 25vw;
+    height: 25vw;
+  }  
 }
 /* For tablets and small desktops 1024*768px =====================*/
 @media screen and (max-width: 1024px) {
   * {
     cursor: auto;
+  }
+  /* nav */
+  nav {
+    padding: 5vw 5vw;
+  }
+  .navRight ul {
+    display: flex;
+    gap: 4vw;
   }
   .mousefollower,
   #behindmouse {
@@ -816,23 +860,32 @@ address,
   .arrowBox:nth-of-type(8) {
     display: none;
   }
-  /* page1 */
-  .p1content1{
-    padding: 14vw 2vw;
+  .boxes {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5vw;
   }
+  .boxes .imgBox:nth-of-type(1) .img, 
+  .boxes .imgBox:nth-of-type(7) .img {
+    height: 55vw;
+    width: 100%;
+  }
+  .boxes .imgBox:nth-of-type(2) .img,
+  .boxes .imgBox:nth-of-type(5) .img,
+  .boxes .imgBox:nth-of-type(6) .img ,
+  .boxes .imgBox:nth-of-type(9) .img {
+    height: 55vw;
+    width: 100%;
+  }
+  .boxes .imgBox:nth-of-type(5),
+.boxes .imgBox:nth-of-type(9) {
+  padding-top:0;
+}
+.boxes .imgBox:nth-of-type(7) {
+  margin-top: 0;
+}
 }
 /* For tablets in portrait mode 768*1024px */
 @media screen and (max-width: 768px) {
-
-}
-/* For large phones and smaller tablets 600* 800px */
-@media screen and (max-width: 600px) {
-}
-@media screen and (max-width: 500px) {
-}
-/* For standard mobile phones 424*736px */
-@media screen and (max-width: 424px) {
-  /* loader */
   #loader .line:first-child {
     flex-direction: column;
   }
@@ -878,7 +931,6 @@ address,
   .navLeft .icons svg {
     width: 4rem;
   }
-
   .navRight {
     display: none;
   }
@@ -1086,6 +1138,16 @@ address,
   .copyright .copyrightTxt {
     padding: 8vw 0;
   }
+}
+/* For large phones and smaller tablets 600* 800px */
+@media screen and (max-width: 600px) {
+}
+@media screen and (max-width: 500px) {
+}
+/* For standard mobile phones 424*736px */
+@media screen and (max-width: 424px) {
+  /* loader */
+  
 }
 /* For small mobile phones 375*667px */
 @media screen and (max-width: 375px) {
