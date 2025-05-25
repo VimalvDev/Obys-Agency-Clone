@@ -1,47 +1,22 @@
 window.addEventListener("beforeunload", () => {
   window.scrollTo(0, 0);
 });
-let lastScroll = window.scrollY;
-let nav = document.querySelector(".navRight");
-
-window.addEventListener("scroll", () => {
-  let currentScroll = window.scrollY;
-
-  if (currentScroll > lastScroll) {
-    // Scrolling down
-    gsap.to(nav, {
-      top: "-50px",
-      opacity:0,
-      duration: 0.4,
-      ease: "power2.out"
-    });
-  } else {
-    // Scrolling up
-    gsap.to(nav, {
-      top: "0px",
-      opacity: 1,
-      duration: 0.4,
-      ease: "power2.out",
-    });
-  }
-
-  lastScroll = currentScroll;
-});
 
 function lenisStart() {
   const lenis = new Lenis({
-    duration: 2, // Controls how "slow/smooth" the scroll feels (default: 1.2)
+    duration: 1.6, // Controls how "slow/smooth" the scroll feels (default: 1.2)
   });
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
   });
-  gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(0);
 }
 lenisStart();
 
 function startingAnim() {
   let tl = gsap.timeline();
+
   //up
   tl.from("#loader .line h1", {
     yPercent: 100,
@@ -50,6 +25,7 @@ function startingAnim() {
     delay: 0.2,
   });
   //timer
+  
   tl.from(
     ".timer",
     {
@@ -63,7 +39,8 @@ function startingAnim() {
           } else {
             clearInterval(timefun);
           }
-        }, 25);
+        }
+          , 25);
       },
     },
     0.6
@@ -83,7 +60,7 @@ function startingAnim() {
       opacity: 0,
       stagger: 0.1,
     },
-    "+=1.5"
+    "+=2"
   );
   tl.to(
     "#loader .line h1,.part2 .txt",
@@ -97,7 +74,8 @@ function startingAnim() {
     yPercent: -100,
     duration: 1.5,
     ease: "power3.out",
-  });
+  }
+  );
   //page1
   tl.from(
     ".p1content1 .right h1",
@@ -111,13 +89,6 @@ function startingAnim() {
 }
 startingAnim();
 function customCursor() {
-  // document.addEventListener("mousemove", (e) => {
-  //   gsap.to("#cursor", {
-  //     x: e.clientX,
-  //     y: e.clientY,
-  //     duration: 0.1,
-  //   });
-  // });
   Shery.mouseFollower({
     ease: "cubic-bezier(0.23, 1, 0.320, 1)",
     duration: -1,
@@ -126,13 +97,39 @@ function customCursor() {
 customCursor();
 
 function page1Anim() {
+  //nav auto hide
+  let lastScroll = window.scrollY;
+  let nav = document.querySelector(".navRight");
+
+  window.addEventListener("scroll", () => {
+    let currentScroll = window.scrollY;
+
+    if (currentScroll > lastScroll) {
+      // Scrolling down
+      gsap.to(nav, {
+        top: "-50px",
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    } else {
+      // Scrolling up
+      gsap.to(nav, {
+        top: "0px",
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+    lastScroll = currentScroll;
+  });
   //nav magnet effect
   Shery.makeMagnet("nav li");
   Shery.makeMagnet(".navLeft i");
 
   //parallax effect
   gsap.to(".videoContainer", {
-    yPercent: 35,
+    yPercent: 40,
     ease: "none",
     scrollTrigger: {
       trigger: ".p1content2",
@@ -166,26 +163,43 @@ function page1Anim() {
   let videoCursor = document.querySelector(".videoCursor");
   let video = document.querySelector(".videoContainer video");
 
-  videoCont.addEventListener("mouseenter", () => {
-    videoCont.addEventListener("mousemove", (pos) => {
-      gsap.to("#behindmouse", {
-        opacity: 0,
-      });
-      gsap.to(videoCursor, {
-        left: pos.x - 605,
-        y: pos.y - 180,
-      });
+  function curPos(pos, immediate = false) {
+    const cursorSize = videoCursor.offsetWidth / 2;
+
+    gsap.to("#behindmouse", {
+      opacity: 0,
+      duration: 0.3,
     });
+
+    gsap.to(videoCursor, {
+      left: pos.clientX - cursorSize,
+      top: pos.clientY - cursorSize,
+      duration: 0.2,
+      ease: "power3.out",
+    });
+  }
+
+  videoCont.addEventListener("mouseenter", (e) => {
+    curPos(e); // instantly move to mouse
+    videoCont.addEventListener("mousemove", curPos);
   });
+
   videoCont.addEventListener("mouseleave", () => {
     gsap.to("#behindmouse", {
       opacity: 1,
+      duration: 0.3,
     });
+
     gsap.to(videoCursor, {
       left: "70%",
       top: "-10%",
+      duration: 0.6,
+      ease: "power3.out",
     });
+
+    videoCont.removeEventListener("mousemove", curPos);
   });
+
   videoCont.addEventListener("click", () => {
     if (video.paused) {
       video.play();
@@ -207,71 +221,139 @@ function page1Anim() {
 page1Anim();
 function page2Anim() {
   //parallax effect
-  gsap.to(".boxes .imgBox:nth-of-type(1) .img", {
-    yPercent: -15,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".imgBox",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
+  ScrollTrigger.matchMedia({
+    "(min-width: 768px)": function () {
+      gsap.to(".boxes .imgBox:nth-of-type(1) .img", {
+        yPercent: 10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(1)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(2) .img", {
+        yPercent: 5,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(2)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(5) .img", {
+        yPercent: -10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(5)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(6) .img", {
+        yPercent: 5,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(6)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(7) .img", {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(7)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(9) .img", {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(9)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     },
   });
-  gsap.to(".boxes .imgBox:nth-of-type(2) .img", {
-    yPercent: 5,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".boxes .imgBox:nth-of-type(2)",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
-  gsap.to(".boxes .imgBox:nth-of-type(5) .img", {
-    yPercent: -10,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".boxes .imgBox:nth-of-type(5)",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
-  gsap.to(".boxes .imgBox:nth-of-type(6) .img", {
-    yPercent: 5,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".boxes .imgBox:nth-of-type(6)",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
-  gsap.to(".boxes .imgBox:nth-of-type(7) .img", {
-    yPercent: -15,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".boxes .imgBox:nth-of-type(7)",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
-  gsap.to(".boxes .imgBox:nth-of-type(9) .img", {
-    yPercent: -15,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".boxes .imgBox:nth-of-type(9)",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
+
+  ScrollTrigger.matchMedia({
+    "(max-width: 768px)": function () {
+      gsap.to(".boxes .imgBox:nth-of-type(1) .img", {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".imgBox",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(2) .img", {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(2)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(5) .img", {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(5)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(6) .img", {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(6)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(7) .img", {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(7)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+      gsap.to(".boxes .imgBox:nth-of-type(9) .img", {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".boxes .imgBox:nth-of-type(9)",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     },
   });
   //heading initial animation
   gsap.from("#page2 .leftPage span", {
     opacity: 0,
     duration: 1,
-
     scrollTrigger: {
       once: true,
       start: "top 85%",
@@ -285,6 +367,55 @@ function page2Anim() {
       once: true,
       start: "top 85%",
       trigger: "#page2 .headingTxt",
+    },
+  });
+  //description initial animation
+  gsap.from(".boxes .imgBox:nth-of-type(1) .description", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".boxes .imgBox:nth-of-type(1) .description",
+      start: "top 90%",
+    },
+  });
+  gsap.from(".boxes .imgBox:nth-of-type(2) .description", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".boxes .imgBox:nth-of-type(2) .description",
+      start: "top 90%",
+    },
+  });
+  gsap.from(".boxes .imgBox:nth-of-type(5) .description", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".boxes .imgBox:nth-of-type(5) .description",
+      start: "top 90%",
+    },
+  });
+  gsap.from(".boxes .imgBox:nth-of-type(6) .description", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".boxes .imgBox:nth-of-type(6) .description",
+      start: "top 90%",
+    },
+  });
+  gsap.from(".boxes .imgBox:nth-of-type(7) .description", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".boxes .imgBox:nth-of-type(7) .description",
+      start: "top 90%",
+    },
+  });
+  gsap.from(".boxes .imgBox:nth-of-type(9) .description", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".boxes .imgBox:nth-of-type(9) .description",
+      start: "top 90%",
     },
   });
 
@@ -467,16 +598,21 @@ page2Anim();
 
 function page3Anim() {
   //parallax effect
-  gsap.to(".blueBox", {
-    yPercent: 5,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".blueBoxContainer",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
+  ScrollTrigger.matchMedia({
+    "(min-width: 768px)": function () {
+      gsap.to(".blueBox", {
+        yPercent: 5,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".blueBoxContainer",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     },
   });
+  
   //heading animation
   gsap.from("#page3 .left span", {
     opacity: 0,
@@ -503,7 +639,7 @@ function page3Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p3underline",
-      start: "top 100%",
+      start: "top 95%",
       once: true,
     },
   });
@@ -513,8 +649,34 @@ function page3Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p3underline2",
-      start: "top 100%",
+      start: "top 75%",
       once: true,
+    },
+  });
+  gsap.from(".p3Bottom .bTop .right p", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".p3Bottom .bTop .right",
+      start: "top 75%",
+    },
+  });
+  //paragraph animation
+  gsap.from(".p3content2 .top p span", {
+    opacity:0,
+    stagger: 0.1,
+    scrollTrigger: {
+      once: true,
+      trigger: ".p3content2 .top p",
+      start: "top 85%",
+    },
+  });
+  gsap.from(".p3content2 .bottomParaRight", {
+    opacity: 0,
+    scrollTrigger: {
+      once: true,
+      trigger: ".p3content2 .bottomParaRight",
+      start: "top 85%",
     },
   });
 }
@@ -562,9 +724,20 @@ function page4Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p4underline",
-      start: "top 100%",
+      start: "top 75%",
       once: true,
     },
   });
+  gsap.from(".p4underline2", {
+    xPercent: 100,
+    ease: "power3.out",
+    duration: 1,
+    scrollTrigger: {
+      trigger: ".infoBox",
+      start: "top 85%",
+      once: true,
+    },
+  });
+  //
 }
 page4Anim();
