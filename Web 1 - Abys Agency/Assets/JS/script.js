@@ -222,7 +222,7 @@ page1Anim();
 function page2Anim() {
   //parallax effect
   ScrollTrigger.matchMedia({
-    "(min-width: 768px)": function () {
+    "(min-width: 1024px)": function () {
       gsap.to(".boxes .imgBox:nth-of-type(1) .img", {
         yPercent: 10,
         ease: "none",
@@ -244,7 +244,7 @@ function page2Anim() {
         },
       });
       gsap.to(".boxes .imgBox:nth-of-type(5) .img", {
-        yPercent: -10,
+        yPercent: 10,
         ease: "none",
         scrollTrigger: {
           trigger: ".boxes .imgBox:nth-of-type(5)",
@@ -264,7 +264,7 @@ function page2Anim() {
         },
       });
       gsap.to(".boxes .imgBox:nth-of-type(7) .img", {
-        yPercent: -15,
+        yPercent: 15,
         ease: "none",
         scrollTrigger: {
           trigger: ".boxes .imgBox:nth-of-type(7)",
@@ -274,7 +274,7 @@ function page2Anim() {
         },
       });
       gsap.to(".boxes .imgBox:nth-of-type(9) .img", {
-        yPercent: -15,
+        yPercent: 15,
         ease: "none",
         scrollTrigger: {
           trigger: ".boxes .imgBox:nth-of-type(9)",
@@ -505,8 +505,7 @@ function page2Anim() {
   });
 
   gsap.to(".arrowBox:nth-of-type(3) .circleBtn", {
-    yPercent: -60,
-    rotate: "40deg",
+    yPercent: -50,
     ease: "none",
     scrollTrigger: {
       trigger: ".arrowBox:nth-of-type(3)",
@@ -526,8 +525,7 @@ function page2Anim() {
     },
   });
   gsap.to(".arrowBox:nth-of-type(4) .circleBtn", {
-    yPercent: -60,
-    rotate: "49deg",
+    yPercent: -10,
     ease: "none",
     scrollTrigger: {
       trigger: ".arrowBox:nth-of-type(4)",
@@ -547,7 +545,6 @@ function page2Anim() {
   });
   gsap.to(".arrowBox:nth-of-type(8) .circleBtn", {
     yPercent: -60,
-    rotate: "-45deg",
     ease: "none",
     scrollTrigger: {
       trigger: ".arrowBox:nth-of-type(8)",
