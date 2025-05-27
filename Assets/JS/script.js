@@ -9,9 +9,6 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-if (window.innerWidth < 500) gsap.ticker.lagSmoothing(1000, 16);
-else gsap.ticker.lagSmoothing(0);
-
 function startingAnim() {
   let tl = gsap.timeline();
 
@@ -33,32 +30,24 @@ function startingAnim() {
         countdown.textContent = count++;
       } else {
         clearInterval(interval);
-
         // 3️⃣ Continue the rest of the timeline only after timer completes
         resumeTimeline();
       }
     }, 25);
-
     // Pause GSAP timeline until resumeTimeline is called
     tl.pause();
   }, "+=0.3");
 
-  // 4️⃣ Define the rest of the animation in another timeline or function
+  // 4️⃣ Define the rest of the animation
   function resumeTimeline() {
-    // Resume GSAP timeline
     tl.resume();
-
-    // Continue timeline
     tl.from(".txt", {
       opacity: 0,
     });
-
     tl.to("#loader .line span", {
       opacity: 0,
       stagger: 0.1,
-      // delay: 2,
     });
-
     tl.to(
       "#loader .line h1, .part2 .txt",
       {
@@ -67,7 +56,6 @@ function startingAnim() {
       },
       "-=0.5"
     );
-
     tl.to("#loader", {
       yPercent: -100,
       duration: 1.5,
@@ -97,29 +85,25 @@ customCursor();
 
 function page1Anim() {
   //nav auto hide
-  let lastScroll = window.scrollY;
   let nav = document.querySelector(".navRight");
+  let hoverTxt = document.querySelector(".p1txtHover");
+  let hoverImg = document.querySelector(".hoverImg");
+  let videoCont = document.querySelector(".videoContainer");
+  let videoCursor = document.querySelector(".videoCursor");
+  let video = document.querySelector(".videoContainer video");
 
+  let lastScroll = window.scrollY;
   window.addEventListener("scroll", () => {
     let currentScroll = window.scrollY;
+    let isScrollingDown = currentScroll > lastScroll;
 
-    if (currentScroll > lastScroll) {
-      // Scrolling down
-      gsap.to(nav, {
-        top: "-50px",
-        opacity: 0,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    } else {
-      // Scrolling up
-      gsap.to(nav, {
-        top: "0px",
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    }
+    gsap.to(nav, {
+      top: isScrollingDown ? "-50px" : "0px",
+      opacity: isScrollingDown ? 0 : 1,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+
     lastScroll = currentScroll;
   });
   //nav magnet effect
@@ -137,10 +121,8 @@ function page1Anim() {
       scrub: true,
     },
   });
-  //hoverImg
-  let hoverTxt = document.querySelector(".p1txtHover");
-  let hoverImg = document.querySelector(".hoverImg");
 
+  //hoverImg
   hoverTxt.addEventListener("mouseenter", () => {
     hoverTxt.addEventListener("mousemove", (pos) => {
       gsap.to(hoverImg, {
@@ -157,48 +139,8 @@ function page1Anim() {
       opacity: 0,
     });
   });
+
   //video cursor
-  let videoCont = document.querySelector(".videoContainer");
-  let videoCursor = document.querySelector(".videoCursor");
-  let video = document.querySelector(".videoContainer video");
-
-  function curPos(pos, immediate = false) {
-    const cursorSize = videoCursor.offsetWidth / 2;
-
-    gsap.to("#behindmouse", {
-      opacity: 0,
-      duration: 0.3,
-    });
-
-    gsap.to(videoCursor, {
-      left: pos.clientX - cursorSize,
-      top: pos.clientY - cursorSize,
-      duration: 0.2,
-      ease: "power3.out",
-    });
-  }
-
-  videoCont.addEventListener("mouseenter", (e) => {
-    curPos(e); // instantly move to mouse
-    videoCont.addEventListener("mousemove", curPos);
-  });
-
-  videoCont.addEventListener("mouseleave", () => {
-    gsap.to("#behindmouse", {
-      opacity: 1,
-      duration: 0.3,
-    });
-
-    gsap.to(videoCursor, {
-      left: "70%",
-      top: "-10%",
-      duration: 0.6,
-      ease: "power3.out",
-    });
-
-    videoCont.removeEventListener("mousemove", curPos);
-  });
-
   videoCont.addEventListener("click", () => {
     if (video.paused) {
       video.play();
@@ -282,71 +224,8 @@ function page2Anim() {
           scrub: true,
         },
       });
-    },
-  });
-
-  ScrollTrigger.matchMedia({
-    "(max-width: 768px)": function () {
-      gsap.to(".boxes .imgBox:nth-of-type(1) .img", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".imgBox",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(".boxes .imgBox:nth-of-type(2) .img", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".boxes .imgBox:nth-of-type(2)",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(".boxes .imgBox:nth-of-type(5) .img", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".boxes .imgBox:nth-of-type(5)",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(".boxes .imgBox:nth-of-type(6) .img", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".boxes .imgBox:nth-of-type(6)",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(".boxes .imgBox:nth-of-type(7) .img", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".boxes .imgBox:nth-of-type(7)",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(".boxes .imgBox:nth-of-type(9) .img", {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".boxes .imgBox:nth-of-type(9)",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      ScrollTrigger.refresh();
+      console.log("animation aagya")
     },
   });
   //heading initial animation
@@ -425,7 +304,7 @@ function page2Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p2underline",
-      start: "top 100%",
+      start: "top 90%",
       once: true,
     },
   });
@@ -437,7 +316,7 @@ function page2Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p2underlineBox1",
-      start: "top 100%",
+      start: "top 90%",
       once: true,
     },
   });
@@ -447,7 +326,7 @@ function page2Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p2underlineBox2",
-      start: "top 100%",
+      start: "top 90%",
       once: true,
     },
   });
@@ -457,7 +336,7 @@ function page2Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p2underlineBox3",
-      start: "top 100%",
+      start: "top 90%",
       once: true,
     },
   });
@@ -467,7 +346,7 @@ function page2Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p2underlineBox4",
-      start: "top 100%",
+      start: "top 90%",
       once: true,
     },
   });
@@ -477,7 +356,7 @@ function page2Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p2underlineBox5",
-      start: "top 100%",
+      start: "top 90%",
       once: true,
     },
   });
@@ -487,7 +366,7 @@ function page2Anim() {
     duration: 1,
     scrollTrigger: {
       trigger: ".p2underlineBox6",
-      start: "top 100%",
+      start: "top 90%",
       once: true,
     },
   });
