@@ -12,7 +12,7 @@ This project replicates complex animations, smooth transitions, and an engaging 
 
 ### 🖼 Homepage
 
-![Homepage](./IMG/homepage.png)
+![Homepage](./IMG/README IMGs/homepage.png)
 
 
 ---
