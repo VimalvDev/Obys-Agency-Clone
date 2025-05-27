@@ -14,7 +14,6 @@ This project replicates complex animations, smooth transitions, and an engaging 
 ![Homepage](IMG/README-IMGs/homepage.png)
 
 ### 📦 Complex Section with Structured Boxes
-![Structured](IMG/README-IMGs/structure1.png)
 ![Structured](IMG/README-IMGs/structure2.png)
 
 ### 🖼 Infinity Scroll Animation
