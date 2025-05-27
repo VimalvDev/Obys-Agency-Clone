@@ -15,7 +15,7 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: none;
-  cursor: auto;
+  cursor: none;
   scroll-behavior: smooth;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -290,14 +290,15 @@ nav {
   width: clamp(100px, 8.5vw, 180px);
   height: clamp(100px, 8.5vw, 180px);
   background-color: #ffa63d;
-  position: fixed !important;
+  position: absolute;
   z-index: 99;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: -10%;
-  left: 70%;
+  pointer-events: none;
+  top: 40%;
+  left: 45%;
 }
 .videoCursor i {
   font-size: clamp(15px, 2vw, 40px);
@@ -527,22 +528,22 @@ nav {
 }
 .projectBtn a {
   color: white;
-  width: clamp(160px, 22vw, 410px);
-  height: clamp(160px, 22vw, 410px);
+  width: clamp(120px, 22vw, 410px);
+  height: clamp(120px, 22vw, 410px);
   background-color: #ffa63d;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: scale 0.3s;
-  font-size: clamp(13px, 0.9vw, 16px);
+  font-size: clamp(10px, 0.9vw, 16px);
 }
 .projectBtn a:hover {
   scale: 0.9;
 }
 .projectBtn a span {
   font-family: silkserif-italic;
-  font-size: clamp(13px, 0.9vw, 16px);
+  font-size: clamp(10px, 0.9vw, 16px);
 }
 /*======================= page 3============================ */
 #page3 {
@@ -841,7 +842,7 @@ address,
   }  
 }
 /* For tablets and small desktops 1024*768px =====================*/
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   * {
     cursor: auto;
   }
