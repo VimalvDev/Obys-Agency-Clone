@@ -11,9 +11,14 @@ This project replicates complex animations, smooth transitions, and an engaging 
 ## 📸 Screenshots
 
 ### 🖼 Homepage
-
 ![Homepage](IMG/README-IMGs/homepage.png)
 
+### 📦 Complex Section with Structured Boxes
+![Structured](IMG/README-IMGs/structure1.png)
+![Structured](IMG/README-IMGs/structure2.png)
+
+### 🖼 Infinity Scroll Animation
+![InfinityScroll](IMG/README-IMGs/infinity.png)
 
 ---
 
@@ -53,3 +58,20 @@ This project replicates complex animations, smooth transitions, and an engaging 
   - [ ] Add optional **backend functionality** (e.g., contact form, CMS integration)
 
 > ⚡ This is an evolving project — it will be continuously improved as I grow as a developer.
+
+---
+
+## 🤝 Credits & Inspiration
+
+- Inspired by the design and creativity of [Obys Creative Agency](https://obys.agency)
+- Developed with ❤️ by **Vimal Verma**
+
+---
+
+## 📜 License
+
+This project is intended for **educational purposes only**.  
+No commercial use is permitted.
+
+> Feel free to explore and learn from the code, but please do not copy the project for commercial work or claim as your own.
+
