@@ -2,90 +2,90 @@ window.addEventListener("beforeunload", () => {
   window.scrollTo(0, 0);
 });
 
-function lenisStart() {
-  const lenis = new Lenis({
-    duration: 1.6, // Controls how "slow/smooth" the scroll feels (default: 1.2)
-  });
-  lenis.on("scroll", ScrollTrigger.update);
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-    gsap.ticker.lagSmoothing(0);
+const lenis = new Lenis();
+lenis.on("scroll", ScrollTrigger.update);
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
-lenisStart();
+requestAnimationFrame(raf);
+
+if (window.innerWidth < 500) gsap.ticker.lagSmoothing(1000, 16);
+else gsap.ticker.lagSmoothing(0);
 
 function startingAnim() {
   let tl = gsap.timeline();
 
-  //up
+  // 1️⃣ Initial loader entrance animation
   tl.from("#loader .line h1", {
     yPercent: 100,
     stagger: 0.2,
     duration: 0.7,
     delay: 0.2,
   });
-  //timer
-  
-  tl.from(
-    ".timer",
-    {
-      opacity: 0,
-      onStart: function () {
-        let countdown = document.querySelector(".countdown");
-        let count = 0;
-        let timefun = setInterval(() => {
-          if (count <= 100) {
-            countdown.textContent = count++;
-          } else {
-            clearInterval(timefun);
-          }
-        }
-          , 25);
-      },
-    },
-    0.6
-  );
-  tl.from(
-    ".txt",
-    {
-      opacity: 0,
-    },
-    1
-  );
 
-  //end
-  tl.to(
-    "#loader .line span",
-    {
+  // 2️⃣ Countdown timer
+  tl.add(() => {
+    let countdown = document.querySelector(".countdown");
+    let count = 0;
+
+    let interval = setInterval(() => {
+      if (count <= 100) {
+        countdown.textContent = count++;
+      } else {
+        clearInterval(interval);
+
+        // 3️⃣ Continue the rest of the timeline only after timer completes
+        resumeTimeline();
+      }
+    }, 25);
+
+    // Pause GSAP timeline until resumeTimeline is called
+    tl.pause();
+  }, "+=0.3");
+
+  // 4️⃣ Define the rest of the animation in another timeline or function
+  function resumeTimeline() {
+    // Resume GSAP timeline
+    tl.resume();
+
+    // Continue timeline
+    tl.from(".txt", {
+      opacity: 0,
+    });
+
+    tl.to("#loader .line span", {
       opacity: 0,
       stagger: 0.1,
-    },
-    "+=2"
-  );
-  tl.to(
-    "#loader .line h1,.part2 .txt",
-    {
-      opacity: 0,
-      stagger: 0.1,
-    },
-    "-=0.5"
-  );
-  tl.to("#loader", {
-    yPercent: -100,
-    duration: 1.5,
-    ease: "power3.out",
+      // delay: 2,
+    });
+
+    tl.to(
+      "#loader .line h1, .part2 .txt",
+      {
+        opacity: 0,
+        stagger: 0.1,
+      },
+      "-=0.5"
+    );
+
+    tl.to("#loader", {
+      yPercent: -100,
+      duration: 1.5,
+      ease: "power3.out",
+    });
+
+    // Page1 animation
+    tl.from(
+      ".p1content1 .right h1",
+      {
+        yPercent: 100,
+        stagger: 0.2,
+        duration: 0.7,
+      },
+      "-=1.4"
+    );
   }
-  );
-  //page1
-  tl.from(
-    ".p1content1 .right h1",
-    {
-      yPercent: 100,
-      stagger: 0.2,
-      duration: 0.7,
-    },
-    "-=1.4"
-  );
 }
 startingAnim();
 function customCursor() {
@@ -244,7 +244,7 @@ function page2Anim() {
         },
       });
       gsap.to(".boxes .imgBox:nth-of-type(5) .img", {
-        yPercent: 10,
+        yPercent: 5,
         ease: "none",
         scrollTrigger: {
           trigger: ".boxes .imgBox:nth-of-type(5)",
@@ -264,7 +264,7 @@ function page2Anim() {
         },
       });
       gsap.to(".boxes .imgBox:nth-of-type(7) .img", {
-        yPercent: 15,
+        yPercent: 10,
         ease: "none",
         scrollTrigger: {
           trigger: ".boxes .imgBox:nth-of-type(7)",
@@ -274,7 +274,7 @@ function page2Anim() {
         },
       });
       gsap.to(".boxes .imgBox:nth-of-type(9) .img", {
-        yPercent: 15,
+        yPercent: 10,
         ease: "none",
         scrollTrigger: {
           trigger: ".boxes .imgBox:nth-of-type(9)",
@@ -609,7 +609,7 @@ function page3Anim() {
       });
     },
   });
-  
+
   //heading animation
   gsap.from("#page3 .left span", {
     opacity: 0,
@@ -660,7 +660,7 @@ function page3Anim() {
   });
   //paragraph animation
   gsap.from(".p3content2 .top p span", {
-    opacity:0,
+    opacity: 0,
     stagger: 0.1,
     scrollTrigger: {
       once: true,
