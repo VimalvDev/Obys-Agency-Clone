@@ -11,13 +11,13 @@ This project replicates complex animations, smooth transitions, and an engaging 
 ## 📸 Screenshots
 
 ### 🖼 Homepage
-<img src="IMG/README-IMGs/homepage.png" alt="Homepage" width="500" />
+<img src="IMG/README-IMGs/homepage.png" alt="Homepage" width="600" />
 
 ### 📦 Complex Section with Structured Boxes
-<img src="IMG/README-IMGs/structure2.png" alt="structure" width="500" />
+<img src="IMG/README-IMGs/structure2.png" alt="structure" width="600" />
 
 ### 🖼 Infinity Scroll Animation
-<img src="IMG/README-IMGs/infinity.png" alt="infinity" width="500" />
+<img src="IMG/README-IMGs/infinity.png" alt="infinity" width="600" />
 
 ---
 
@@ -39,8 +39,8 @@ This project replicates complex animations, smooth transitions, and an engaging 
 - **JavaScript (ES6)**
 - [`GSAP`](https://greensock.com/gsap/)
 - [`ScrollTrigger`](https://greensock.com/scrolltrigger/)
-- [`Shery.js`](https://github.com/SheryJS/sheryjs)
-- [`Lenis`](https://github.com/studio-freight/lenis)
+- [`Shery.js`]([https://github.com/SheryJS/sheryjs](https://github.com/sheryianscodingschool/sheryjs))
+- [`Lenis`](https://github.com/darkroomengineering/lenis)
 
 ---
 
