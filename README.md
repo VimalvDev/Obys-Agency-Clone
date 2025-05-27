@@ -1,20 +1,30 @@
 # Obys Agency Clone (Homepage Only)
 
-A high-fidelity clone of the Obys Creative Agency homepage built using HTML, CSS, JavaScript, GSAP, ScrollTrigger, and Shery.js.  
-This project focuses on replicating smooth animations, scroll-based transitions, and a modern creative layout.
+A pixel-perfect, high-fidelity clone of the Obys Creative Agency homepage, developed with modern web technologies including HTML, CSS, JavaScript, and GSAP.  
+This project replicates complex animations, smooth transitions, and an engaging user experience inspired by Obys’ creative style.
 
 ## 🚀 Live Demo
 [Click here to view](https://obys-agency-vimal.vercel.app)
 
 ---
 
+## 📸 Screenshots
+
+### 🖼 Homepage
+
+![Homepage](./IMG/homepage.png)
+
+
+---
+
 ## ✨ Features
 
-- Clean and responsive layout
-- GSAP animations + ScrollTrigger
-- Shery.js hover animations & cursor effects
-- Custom loader & smooth scroll (Lenis)
-- Creative design matching original Obys look
+- ⚡ Smooth scrolling with **Lenis**
+- 🎬 Complex scroll-based animations using **GSAP** and **ScrollTrigger**
+- 🖱️ Interactive hover and cursor effects with **Shery.js**
+- 🧠 Creative layout and visual storytelling
+- 💻 Responsive design for all screen sizes
+- ⏳ Custom animated loader
 
 ---
 
@@ -23,13 +33,23 @@ This project focuses on replicating smooth animations, scroll-based transitions,
 - **HTML5**
 - **CSS3**
 - **JavaScript (ES6)**
-- **GSAP 3 + ScrollTrigger**
-- **Shery.js**
-- **Lenis (Smooth Scroll)**
+- [`GSAP`](https://greensock.com/gsap/)
+- [`ScrollTrigger`](https://greensock.com/scrolltrigger/)
+- [`Shery.js`](https://github.com/SheryJS/sheryjs)
+- [`Lenis`](https://github.com/studio-freight/lenis)
 
 ---
 
-## 📌 Status
+## 📈 Project Status & Roadmap
 
-**Current Stage:** Page 1 layout and animations complete  
-**Next Steps:** Navbar, page transitions, interactive functionality, and complete site flow.
+- ✅ **Homepage design and animations completed** using HTML, CSS, JavaScript, GSAP, and Shery.js  
+- 🔄 Currently working with my existing frontend skills
+- 🚧 **Planned upgrades as I learn new technologies:**
+  - [ ] Add a **responsive navbar**
+  - [ ] Implement **page transitions**
+  - [ ] Build a full multi-page layout and complete site flow
+  - [ ] Migrate to **React** and **Next.js**
+  - [ ] Integrate **Framer Motion** for smoother and more advanced animations
+  - [ ] Add optional **backend functionality** (e.g., contact form, CMS integration)
+
+> ⚡ This is an evolving project — it will be continuously improved as I grow as a developer.
