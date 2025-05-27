@@ -1,7 +1,3 @@
-import { injectSpeedInsights } from "@vercel/speed-insights";
-
-injectSpeedInsights();
-
 window.addEventListener("beforeunload", () => {
   window.scrollTo(0, 0);
 });
