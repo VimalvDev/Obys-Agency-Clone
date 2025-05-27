@@ -4,7 +4,7 @@ A high-fidelity clone of the Obys Creative Agency homepage built using HTML, CSS
 This project focuses on replicating smooth animations, scroll-based transitions, and a modern creative layout.
 
 ## 🚀 Live Demo
-[Click here to view](livehttps://obys-agency-vimal.vercel.app)
+[Click here to view](https://obys-agency-vimal.vercel.app)
 
 ---
 
