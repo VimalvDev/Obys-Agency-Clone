@@ -14,7 +14,7 @@ This project replicates complex animations, smooth transitions, and an engaging 
 <img src="IMG/README-IMGs/homepage.png" alt="Homepage" width="600" />
 
 ### 📦 Complex Section with Structured Boxes
-<img src="IMG/README-IMGs/structure2.png" alt="structure" width="600" />
+<img src="IMG/README-IMGs/structure.png" alt="structure" width="600" />
 
 ### 🖼 Infinity Scroll Animation
 <img src="IMG/README-IMGs/infinity.png" alt="infinity" width="600" />
