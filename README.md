@@ -39,7 +39,7 @@ This project replicates complex animations, smooth transitions, and an engaging 
 - **JavaScript (ES6)**
 - [`GSAP`](https://greensock.com/gsap/)
 - [`ScrollTrigger`](https://greensock.com/scrolltrigger/)
-- [`Shery.js`]([https://github.com/SheryJS/sheryjs](https://github.com/sheryianscodingschool/sheryjs))
+- [`Shery.js`](https://github.com/sheryianscodingschool/sheryjs)
 - [`Lenis`](https://github.com/darkroomengineering/lenis)
 
 ---
