@@ -11,7 +11,7 @@ This project replicates complex animations, smooth transitions, and an engaging 
 ## 📸 Screenshots
 
 ### 🖼 Homepage
-![Homepage](IMG/README-IMGs/homepage.png)
+<img src="IMG/README-IMGs/homepage.png" alt="Homepage" width="600" />
 
 ### 📦 Complex Section with Structured Boxes
 ![Structured](IMG/README-IMGs/structure2.png)
