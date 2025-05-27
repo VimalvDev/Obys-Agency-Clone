@@ -1,3 +1,5 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 window.addEventListener("beforeunload", () => {
   window.scrollTo(0, 0);
 });
@@ -225,7 +227,7 @@ function page2Anim() {
         },
       });
       ScrollTrigger.refresh();
-      console.log("animation aagya")
+      console.log("animation aagya");
     },
   });
   //heading initial animation
