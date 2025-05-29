@@ -64,13 +64,3 @@ This project replicates complex animations, smooth transitions, and an engaging 
 
 - Inspired by the design and creativity of [Obys Creative Agency](https://obys.agency)
 - Developed with ❤️ by **Vimal Verma**
-
----
-
-## 📜 License
-
-This project is intended for **educational purposes only**.  
-No commercial use is permitted.
-
-> Feel free to explore and learn from the code, but please do not copy the project for commercial work or claim as your own.
-
