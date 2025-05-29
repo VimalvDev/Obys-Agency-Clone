@@ -1,7 +1,7 @@
 # Obys Agency Clone (Homepage Only)
 
-A pixel-perfect, high-fidelity clone of the Obys Creative Agency homepage, developed with modern web technologies including HTML, CSS, JavaScript, and GSAP.  
-This project replicates complex animations, smooth transitions, and an engaging user experience inspired by Obys’ creative style.
+- A pixel-perfect, high-fidelity clone of the Obys Creative Agency homepage, developed with modern web technologies including HTML, CSS, JavaScript, and GSAP.  
+- This project replicates complex animations, smooth transitions, and an engaging user experience inspired by Obys’ creative style.
 
 ## 🚀 Live Demo
 [Click here to view](https://obys-agency-vimal.vercel.app)
