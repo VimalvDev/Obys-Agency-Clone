@@ -1,14 +1,14 @@
 @font-face {
   font-family: plain-regular;
-  src: url(/assets/Fonts/plain-regular-webfont.woff);
+  src: url(/assets/fonts/plain-regular-webfont.woff);
 }
 @font-face {
   font-family: silkserif-italic;
-  src: url(/assets/Fonts/silkserif-regularitalic-webfont.woff);
+  src: url(/assets/fonts/silkserif-regularitalic-webfont.woff);
 }
 @font-face {
   font-family: plain-light;
-  src: url(/assets/Fonts/plain-light-webfont.woff);
+  src: url(/assets/fonts/plain-light-webfont.woff);
 }
 * {
   margin: 0;
