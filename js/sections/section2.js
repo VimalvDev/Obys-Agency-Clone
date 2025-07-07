@@ -63,7 +63,7 @@ export function page2Anim() {
         },
       });
       ScrollTrigger.refresh();
-      console.log("animation aagya");
+
     },
   });
   //heading initial animation

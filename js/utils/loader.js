@@ -1,38 +1,35 @@
+import { cursor } from "./cursor.js";
 export function startingLoader() {
-  let tl = gsap.timeline();
+  const tl = gsap.timeline();
 
-  // 1️⃣ Initial loader entrance animation
   tl.from("#loader .line h1", {
     yPercent: 100,
     stagger: 0.2,
     duration: 0.7,
-    delay: 0.2,
+    delay: 0.3,
   });
-
-  // 2️⃣ Countdown timer
+  tl.from(".txt", {
+    opacity: 0,
+  });
   tl.add(() => {
-    let countdown = document.querySelector(".countdown");
-    let count = 0;
+    const countdown = document.querySelector(".countdown");
+    if (!countdown) return;
 
-    let interval = setInterval(() => {
+    let count = 0;
+    let interval = () => {
       if (count <= 100) {
         countdown.textContent = count++;
+        requestAnimationFrame(interval);
       } else {
-        clearInterval(interval);
-        // 3️⃣ Continue the rest of the timeline only after timer completes
         resumeTimeline();
       }
-    }, 25);
-    // Pause GSAP timeline until resumeTimeline is called
+    };
+    interval();
     tl.pause();
   }, "+=0.3");
 
-  // 4️⃣ Define the rest of the animation
-  function resumeTimeline() {
+  const resumeTimeline = () => {
     tl.resume();
-    tl.from(".txt", {
-      opacity: 0,
-    });
     tl.to("#loader .line span", {
       opacity: 0,
       stagger: 0.1,
@@ -61,5 +58,8 @@ export function startingLoader() {
       },
       "-=1.4"
     );
-  }
+    tl.add(() => {
+      cursor();
+    }, "-=0.5")
+  };
 }

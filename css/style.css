@@ -48,7 +48,7 @@ main {
   position: fixed;
   z-index: 999;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 0 5vw 7vw;
   display: flex;
   flex-direction: column;
@@ -260,7 +260,6 @@ nav {
   opacity: 0;
   top: 0;
   left: 0;
-  transform: translate(-50%, -50%);
   z-index: 3;
 }
 /* p1content2 */
@@ -843,9 +842,7 @@ address,
 }
 /* For tablets and small desktops 1024*768px =====================*/
 @media screen and (max-width: 1023px) {
-  * {
-    cursor: auto;
-  }
+
   /* nav */
   nav {
     padding: 5vw 5vw;
@@ -854,10 +851,7 @@ address,
     display: flex;
     gap: 4vw;
   }
-  .mousefollower,
-  #behindmouse {
-    display: none !important;
-  }
+
   .arrowBox:nth-of-type(3),
   .arrowBox:nth-of-type(4),
   .arrowBox:nth-of-type(8) {
@@ -889,6 +883,13 @@ address,
 }
 /* For tablets in portrait mode 768*1024px */
 @media screen and (max-width: 768px) {
+  * {
+    cursor: auto;
+  }
+  .mousefollower,
+  #behindmouse {
+    display: none !important;
+  }
   #loader .line:first-child {
     flex-direction: column;
   }
