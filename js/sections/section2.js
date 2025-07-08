@@ -70,7 +70,7 @@ export function page2Anim() {
       duration: 1,
       scrollTrigger: {
         trigger: selector,
-        start: "top 30%",
+        start: "top 78%",
         once: true,
       },
     });
