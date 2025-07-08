@@ -15,7 +15,7 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: none;
-  cursor: auto;
+  cursor: none;
   scroll-behavior: smooth;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
