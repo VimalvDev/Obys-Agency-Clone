@@ -15,7 +15,7 @@
   padding: 0;
   box-sizing: border-box;
   scrollbar-width: none;
-  cursor: none;
+  cursor: auto;
   scroll-behavior: smooth;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -395,7 +395,6 @@ nav {
 }
 .boxes .info {
   padding: 1.6vw 0;
-  margin-top: 1.5vw;
   display: flex;
   justify-content: space-between;
 }
@@ -751,10 +750,11 @@ nav {
   color: transparent;
   -webkit-text-stroke: 1px white;
   position: absolute;
+  padding-top: .5vw;
 }
-.italicTxt span {
+/* .italicTxt span {
   opacity: 0;
-}
+} */
 .heading4 svg {
   width: clamp(32px, 6vw, 110px);
   margin-left: 3vw;
