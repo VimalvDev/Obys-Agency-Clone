@@ -4,7 +4,7 @@
 - This project replicates complex animations, smooth transitions, and an engaging user experience inspired by Obys’ creative style.
 
 ## 🚀 Live Demo
-[Click here to view](https://obys-agency-vimal.vercel.app)
+[Click here to view](https://obys-agency-project.vercel.app/)
 
 ---
 
