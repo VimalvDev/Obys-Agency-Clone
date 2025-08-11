@@ -11,13 +11,13 @@
 ## 📸 Screenshots
 
 ### 🖼 Homepage
-<img src="assets/images/README-IMGs" alt="Homepage" width="600" />
+<img src="assets/images/README-IMGs/homepage.png" alt="Homepage" width="600" />
 
 ### 📦 Complex Section with Structured Boxes
-<img src="IMG/README-IMGs/structure.png" alt="structure" width="600" />
+<img src="assets/images/README-IMGs/structure.png" alt="structure" width="600" />
 
 ### 🖼 Infinity Scroll Animation
-<img src="IMG/README-IMGs/infinity.png" alt="infinity" width="600" />
+<img src="assets/images/README-IMGs/infinity.png" alt="infinity" width="600" />
 
 ---
 
