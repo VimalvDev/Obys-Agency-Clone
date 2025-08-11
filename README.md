@@ -11,7 +11,7 @@
 ## 📸 Screenshots
 
 ### 🖼 Homepage
-<img src="IMG/README-IMGs/homepage.png" alt="Homepage" width="600" />
+<img src="assets/images/README-IMGs" alt="Homepage" width="600" />
 
 ### 📦 Complex Section with Structured Boxes
 <img src="IMG/README-IMGs/structure.png" alt="structure" width="600" />
